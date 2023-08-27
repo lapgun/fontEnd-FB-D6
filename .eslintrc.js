@@ -11,5 +11,12 @@ module.exports = {
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
   plugins: [],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'no-console': 'off',
+    'no-undef': "off",
+  },
+  globals: {
+    "document": true,
+    "window": true
+  }
 }
