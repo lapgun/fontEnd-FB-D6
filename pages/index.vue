@@ -1,5 +1,3 @@
-<!-- eslint-disable no-console -->
-<!-- eslint-disable no-console -->
 <template>
   <div id="app">
     <div v-for="(message, index) in messages" :key="index">
@@ -19,26 +17,17 @@ export default {
     }
   },
   mounted() {
-    // eslint-disable-next-line no-undef
-    socket.on('test', function (data) {
-      console.log(11111)
-    })
+    this.handleEmit()
   },
 
-  sockets: {
-    connect: function () {
-      console.log('socket connected')
+  methods: {
+    handleEmit() {
+      console.log(11111)
+      socket.emit('test-connect', { value: 1 })
+      socket.on('test-connect', function (data) {
+        console.log(data)
+      })
     },
-    // initRoom: function (message) {
-    //   // Đây là nơi nhận cái even initRoom với param là message mà server emit về
-    //   this.messages.push({
-    //     message,
-    //     type: 'status',
-    //   })
-    // },
-  },
-  beforeDestroy() {
-    // this.sockets.unsubscribe('test')
   },
 }
 </script>
